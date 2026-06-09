@@ -1,0 +1,78 @@
+# Redrob Hackathon — Submission Metadata Template
+#
+# Copy this file to your repo root as `submission_metadata.yaml` and fill it in.
+# The fields here should match what you submit via the portal at upload time.
+# Stage 3 review uses this file to verify your portal metadata.
+
+# ============================================================================
+# Team identity
+# ============================================================================
+team_name: "Eklavya_Sahani"  # Used in leaderboard and announcements
+
+primary_contact:
+  name: "Eklavya Sahani"
+  email: "primary@example.com"   # TODO: Update with your registered hackathon email
+  phone: "+91-XXXXXXXXXX"        # TODO: Update with your real contact number
+
+team_members:
+  - name: "Eklavya Sahani"
+    email: "primary@example.com" # TODO: Update with your real email
+    role: "ML & Backend Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/YOUR_USERNAME/redrob_ai_challenge" # TODO: Update with your real GitHub repo URL
+# Required. Must be reachable. Private repos OK if you can grant organizer
+# access at Stage 3 (the email to add will be communicated then).
+
+sandbox_link: "https://huggingface.co/spaces/YOUR_USERNAME/redrob-ranker" # TODO: Update with your real live test link
+# Required. A working hosted environment where the ranker can be run on a small
+# candidate sample. See Section 10.5 of submission_spec.md for acceptable
+# platforms (HuggingFace Spaces, Streamlit Cloud, Replit, Colab, Docker, Binder).
+
+reproduce_command: "python src/main.py"
+# The single command that produces submission.csv from candidates.jsonl.
+# Should run end-to-end within 5 minutes on CPU with 16GB RAM and no network.
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Local Windows PC"                  # Your local environment
+  cpu_cores: 4                                  # Standard local default
+  ram_gb: 16                                    # Available RAM in GB
+  python_version: "3.14.0"                      # Matches your exact C:\Python314 environment path
+  os: "Windows 11"                              # Your active desktop OS
+  uses_gpu_for_inference: false                 # Must be false — see compute constraints
+  has_network_during_ranking: false             # Must be false — no API calls during ranking
+  pre_computation_required: false               # true if you pre-compute embeddings or train models offline
+  pre_computation_time_minutes: 0               # Approximate, if applicable
+
+# ============================================================================
+# AI tools declaration
+# ============================================================================
+# Transparency only — declared use is NOT penalized. Be honest. Stage 5 interview
+# may verify these declarations against your code; declarations that contradict
+# your code or your interview are flagged.
+ai_tools_used:
+  - "Gemini"        # Declared assistant usage
+
+ai_usage_summary: |
+  Used Gemini to discuss system trade-offs, refactor paths from gzip formats to raw local file streaming, and configure automated pipeline validation formatting scripts. No candidate data was sent to any external API during code execution.
+
+# ============================================================================
+# Approach summary (optional but recommended)
+# ============================================================================
+methodology_summary: |
+  Operating solo, I built a cascading Candidate Discovery pipeline for Senior AI Engineers. Stage 1 utilizes stream processing to neutralize keyword-stuffer traps and timeline-paradox honeypots on local hardware. Stage 2 embeds candidate histories using all-MiniLM-L6-v2 vectors to capture semantic skill fit over brittle text keywords. Stage 3 ranks top candidates by applying dynamic multiplicative profile responsiveness factors.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true        # I have read submission_spec.md in full
+  code_is_original_work: true       # My code is my team's original work (using AI as a tool is fine)
+  no_collusion: true                # I have not coordinated my submission with other teams
+  honeypot_check_done: true         # Set to true since our script explicitly filters out honeypots in preprocessing
+  reproduction_tested: true         # I have tested that my reproduce_command runs end-to-end
